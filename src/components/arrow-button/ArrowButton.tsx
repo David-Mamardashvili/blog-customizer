@@ -7,7 +7,7 @@ export type OnClick = () => void;
 
 interface IArrowButtonProps {
 	onClick?: OnClick;
-	isOpen?: boolean;
+	isMenuOpen?: boolean;
 }
 
 export const ArrowButton = (props: IArrowButtonProps) => {
@@ -17,9 +17,9 @@ export const ArrowButton = (props: IArrowButtonProps) => {
 			role='button'
 			aria-label='Открыть/Закрыть форму параметров статьи'
 			tabIndex={0}
-			className={`${styles.container} ${props.isOpen ? styles.container_open : ""}`}
+			className={`${styles.container} ${props.isMenuOpen ? styles.container_open : ""}`}
 			onClick={props.onClick}>
-			<img src={arrow} alt='иконка стрелочки' className={`${styles.arrow} ${props.isOpen ? styles.arrow_open : ""}` } />
+			<img src={arrow} alt='иконка стрелочки' className={`${styles.arrow} ${props.isMenuOpen ? styles.arrow_open : ""}` } />
 		</div>
 	);
 };

@@ -18,9 +18,9 @@ interface IArticleParamsFormProps {
 
 export const ArticleParamsForm = (props: IArticleParamsFormProps) => {
 	const rootRef = useRef<HTMLDivElement | null>(null);
-	const [isOpen, setIsOpen] = useState<boolean>(false);
-  	const onClickIsOpen = () => {
-        setIsOpen(isOpen === false ? true : false);
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  	const onClickIsMenuOpen = () => {
+        setIsMenuOpen(isMenuOpen === false ? true : false);
     }
 
 	const [formState, setFormState] = useState({
@@ -40,7 +40,7 @@ export const ArticleParamsForm = (props: IArticleParamsFormProps) => {
 			contentWidth: formState.contentWidth,
 			fontSizeOption:formState.fontSizeOption,
 		})
-		setIsOpen(false)
+		setIsMenuOpen(false)
 	}
 
 	const resetFormSubmit = (event: React.FormEvent<HTMLFormElement>):void => {
@@ -50,16 +50,16 @@ export const ArticleParamsForm = (props: IArticleParamsFormProps) => {
 	}
 	
 	useOutsideClickClose({
-		isOpen,
+		isMenuOpen,
 		rootRef,
-		onClose: () => setIsOpen(false),
-		onChange: setIsOpen,
+		onClose: () => setIsMenuOpen(false),
+		onChange: setIsMenuOpen,
 	});
 	
 	return (
 		<>
-			<ArrowButton onClick={onClickIsOpen} isOpen={isOpen}/>
-			<aside className={`${styles.container} ${isOpen ? styles.container_open : ""}`} ref={rootRef}>
+			<ArrowButton onClick={onClickIsMenuOpen} isMenuOpen={isMenuOpen}/>
+			<aside className={`${styles.container} ${isMenuOpen ? styles.container_open : ""}`} ref={rootRef}>
 				<form className={styles.form} onSubmit={handleFormSubmit} onReset={resetFormSubmit}>
 					<Text as={'h2'} uppercase={true} weight={800} size={31}>Задайте параметры</Text>
 					<Select selected={formState.fontFamilyOption} options={fontFamilyOptions} onChange={(selected) => { setFormState((prevState) => ({ ...prevState, fontFamilyOption: selected})) }} title="Шрифт"></Select>
