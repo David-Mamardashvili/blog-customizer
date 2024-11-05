@@ -7,7 +7,6 @@ Blog Customizer — это учебный проект, разработанны
 <h2>Технологии:</h2>
 
 • React  
-• Redux  
 • TypeScript  
 • HTML/CSS  
 • REST API  
